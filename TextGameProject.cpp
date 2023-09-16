@@ -31,6 +31,34 @@ void displayIntro() {
     cout << endl;
 
     clearScreen();
+    // Multi-line string for ASCII art
+    string mountainArt =
+        "            .          .           .     .                .       .\n"
+        "  .      .      *           .       .          .                       .\n"
+        "                 .       .   . *                                \n"
+        "  .       ____     .      . .            .                           \n"
+        "         >>         .        .               .\n"
+        " .   .  /WWWI; \\  .       .    .  ____               .         .     .         \n"
+        "  *    /WWWWII; \\=====;    .     /WI;:. \\     .        /\\_             .\n"
+        "  .   /WWWWWII;..      \\_  . ___/WI;:. \\____ .   .  /MMI: \\    .   .         .\n"
+        "     /WWWWWIIIIi;..      \\__/WWWIIII:.. \\____ .   .  /MMWII;   \\    .  .     .\n"
+        " . _/WWWWWIIIi;;;:...:   ;\\WWWWWWIIIII;.     \\     /MMWIIII;   \\              .\n"
+        "  /WWWWWIWIiii;;;.:.. :   ;\\WWWWWIII;;;::     \\___/MMWIIIII;:   \\___     *\n"
+        " /WWWWWIIIIiii;;::.... :   ;|WWWWWWII;;::.:      :;IMWIIIIII;:   \\    .  .     .\n"
+        "WWWWWWWWWIIIIIWIIii;;::;..;\\WWWWWWIII;;;:::...    ;IMWIIIII;;     ::  \\     .\n"
+        "WWWWWWWWWIIIIIIIIIii;;::.;..;\\WWWWWWWWIIIII;;..  :;IMWIIII;:::     :    \\   \n"
+        "WWWWWWWWWWWWWIIIIIIii;;::..;..;\\WWWWWWWWIIII;::; :::::::::.....::       \\\n"
+        "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%XXXXXXX\n"
+        "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%XXXXXXXXXX\n"
+        "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%XXXXXXXXXXXXX\n"
+        "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%XXXXXXXXXXXXXXXXX\n"
+        "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%XXXXXXXXXXXXXXXXXXXX\n"
+        "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%XXXXXXXXXXXXXXXXXXXXXXXXXX\n";
+    cout << mountainArt << endl;
+
+    cin.get();
+
+
     cout << "Your story begins outside of the town of Valungraud." << endl;
     cout << "A small fishing town surrounded by mountainous terrain, thieving bandits, and more." << endl;
     cout << endl;
@@ -88,7 +116,7 @@ int dungeonAdventure(int currentScore) {
         cin.ignore();
 
         if (choice == "1") {
-            int dungeonOutcome = rand() % 7; // Generate a random number for dungeon outcomes
+            int dungeonOutcome = rand() % 8; // Generate a random number for dungeon outcomes
 
             if (dungeonOutcome == 0) {
                 cout << "You encountered a dangerous mega-centipede and barely escaped with scratches. [-30]" << endl;
@@ -141,54 +169,179 @@ int dungeonAdventure(int currentScore) {
                 this_thread::sleep_for(chrono::seconds(3));
             }
             else if (dungeonOutcome == 6) {
-                cout << "Someone hears your presence. They scream out to you manically for help! You walk to where you heard them." << endl;
+                cout << "You hear bones rattling..." << endl;
                 cout << endl;
 
-                cout << "Upon investigation, it seems there is a prisoner being held in the Dungeon. You ask him who he is.." << endl;
+                cout << "It's a SKELETON!" << endl;
+                cout << endl;
                 cout << endl;
 
-                cout << "``PLEASE HELP ME, THEY'RE COMING BACK - YOU HAVE TO MAKE A CHOICE NOW.``" << endl;
-                cout << endl;
+                std::string skeletonArt = R"(
+                                             _.--""-._
+                 .                         ."         ".
+                / \    ,^.         /(     Y             |      )\
+               /   `---. |--'\    (  \__..'--   -   -- -'""-.-'  )
+               |        :|    `>   '.     l_..-------.._l      .'
+               |      __l;__ .'      "-.__.||_.-'v'-._||`"----"
+                \  .-' | |  `              l._       _.'
+                 \/    | |                   l`^^'^^'j
+                  ,    | |                _   \_____/     _
+                  ,    j |               l `--__)-'(__.--' |
+                       | |               | /`---``-----'"1 |  ,-----.
+                ,      | |               )/  `--' '---'   \'-'  ___  `-.
+                   ,   | |              //  `-'  '`----'  /  ,-'   I`.  \
+                     _ L |_            //  `-.-.'`-----' /  /  |   |  `. \
+                    '._' / \         _/(   `/   )- ---' ;  /__.J   L.__.\ :
+                     `._;/7(-.......'  /        ) (     |  |            | |
+                     `._;l _'--------_/        )-'/     :  |___.    _._./ ;
+                       | |                 .__ )-'\  __  \  \  I   1   / /
+                       `-'                /   `-\-(-'   \ \  `.|   | ,' /
+                                          \__  `-'    __/  `-. `---'',-'
+                                             )-._.-- (        `-----'
+                                            )(  l\ o ('..-.
+                                      _..--' _'-' '--'.-. |
+                               __,,-'' _,,-''            \ \
+                              f'. _,,-'                   \ \
+                             ()--  |                       \ \
+                               \.  |                       /  \
+                                 \ \                      |._  |
+                                  \ \                     |  ()|
+                                   \ \                     \  /
+                                    ) `-.                   | |
+                                   // .__)                  | |
+                                _.//7'                      | |
+                              '---'                         j_| `
+                                                           (| |
+                                                            |  \
+                                                            |lllj
+                                                            ||||| 
+               )";
 
-                cout << "Do you unchain the prisoner? [VERY HIGH RISK](1.Yes, 2.No)" << endl;
-                string prisonerChoice;
-                cin >> prisonerChoice;
+                std::cout << skeletonArt << std::endl;
+
+                cout << "Press Enter to continue.." << endl;
+
+                cin.get();
+
+                cout << "Do you FIGHT or RUN from the SKELETON? [VERY HIGH RISK](1.FIGHT, 2.RUN)" << endl;
+                string skeletonChoice;
+                cin >> skeletonChoice;
                 cin.ignore();
-                if (prisonerChoice == "1") {
-                    int prisonerOutcome = rand() % 3;
-                    if (prisonerOutcome == 0) {
-                        cout << "You unchain the prisoner. He thanks you, and goes his own way. You feel better about yourself. [+10]" << endl;
-                        dungeonScore += 10;
+                if (skeletonChoice == "1") {
+                    int skeletonOutcome = rand() % 3;
+                    if (skeletonOutcome == 0) {
+                        cout << "Miraculously, you beat the SKELETON in one blow! You take his SHIELD! [+50]" << endl;
+                        dungeonScore += 50;
                         // Pause for a moment to allow the player to read the message
                         this_thread::sleep_for(chrono::seconds(3));
                     }
-                    else if (prisonerOutcome == 1) {
-                        cout << "He turns to you with a wicked smile once he's released.." << endl;
+                    else if (skeletonOutcome == 1) {
+                        cout << "The SKELETON is stronger than you thought..." << endl;
                         cout << endl;
 
-                        cout << "``You should've known better than that.``" << endl;
+                        cout << "The monster manages to take a slice out of your stomach." << endl;
 
-                        cout << "The crazed prisoner tears the flesh from your face while you struggle to fight him off. He murders you in cold blood. [-200]" << endl;
-                        dungeonScore -= 200;
+                        cout << "This is not good.. [-120]" << endl;
+                        dungeonScore -= 120;
                         // Pause for a moment to allow the player to read the message
                         this_thread::sleep_for(chrono::seconds(5));
                     }
-                    else if (prisonerOutcome == 2) {
-                        cout << "The prisoner turns out to be a wizard testing your kindness. He rewards you with a gift for your good nature. [+100]" << endl;
-                        dungeonScore += 100;
+                    else if (skeletonOutcome == 2) {
+                        cout << "The SKELETON didn't actually want to fight. He pleads for his life, offering his SWORD and SHIELD! [+75]" << endl;
+                        dungeonScore += 75;
                         // Pause for a moment to allow the player to read the message
                         this_thread::sleep_for(chrono::seconds(3));
                     }
                 }
                 else {
-                    cout << "You decide not to release the prisoner. Could be wise. You feel worse about yourself. [-5]" << endl;
-                    dungeonScore -= 5;
+                    cout << "You RUN from the SKELETON! He manages to get a slice in before you're gone! [-10]" << endl;
+                    dungeonScore -= 10;
                     // Pause for a moment to allow the player to read the message
                     this_thread::sleep_for(chrono::seconds(3));
                 }
                 // Pause for a moment to allow the player to read the message
                 this_thread::sleep_for(chrono::seconds(3));
             }
+            else if (dungeonOutcome == 7) {
+            cout << "Someone hears your presence. They scream out to you manically for help! You walk to where you heard them." << endl;
+            cout << endl;
+
+            cout << "Upon investigation, it seems there is a prisoner being held in the Dungeon. You ask him who he is.." << endl;
+            cout << endl;
+
+            cout << "``PLEASE HELP ME, THEY'RE COMING BACK - YOU HAVE TO MAKE A CHOICE NOW.``" << endl;
+            cout << endl;
+            cout << endl;
+
+            string prisonerArt =
+                "*************#*************************%%%%***************************#***********\n"
+                "*************#*************************%+**%%****************************#****#***\n"
+                "**#*************************************++*###***********************#**#*********\n"
+                "*************#*******************+*****##%##%+***********************#***********#\n"
+                "*********#*******#***************#%++*******+=*##********************#************\n"
+                "*************#*****************++==*%*==*+++*##+=+**%****************#************\n"
+                "*************#*********#%=*+***%%%%###%##*#%%##%%%%**++**#**#*********************\n"
+                "**********#**********##+=##########*##+****+###***%%%%%##=******#***#***#*********\n"
+                "**####******###*********######*******%**+***##*******+*#%%###*******##******###*#*\n"
+                "**************####**#######***************+*##**************####****#*************\n"
+                "**************#****####**************%##%%####*****************###**#*************\n"
+                "**************#*####*****************#*******#******************###*#***********#*\n"
+                "****************###*****************#********#**********************#*************\n"
+                "*****************************#*****##********##********************##*************\n"
+                "***************#*******************#**********##*******************#**************\n"
+                "***************#*******************#***********#*******************#**************\n"
+                "***************#******************#************##******************#**************\n"
+                "***************#******************#*****####****#******************#**************\n"
+                "***************#****************#*#*****#*******#******************#**************\n"
+                "***************################**#*****##**##***#**#**************##**************\n"
+                "**************##****************+#*#**##****##**##*#################**************\n";
+
+            cout << prisonerArt << endl;
+
+            cout << "Press Enter to continue.." << endl;
+
+            cin.get();
+
+            cout << "Do you unchain the prisoner? [VERY HIGH RISK](1.Yes, 2.No)" << endl;
+            string prisonerChoice;
+            cin >> prisonerChoice;
+            cin.ignore();
+            if (prisonerChoice == "1") {
+                int prisonerOutcome = rand() % 3;
+                if (prisonerOutcome == 0) {
+                    cout << "You unchain the prisoner. He thanks you, and goes his own way. You feel better about yourself. [+10]" << endl;
+                    dungeonScore += 10;
+                    // Pause for a moment to allow the player to read the message
+                    this_thread::sleep_for(chrono::seconds(3));
+                }
+                else if (prisonerOutcome == 1) {
+                    cout << "He turns to you with a wicked smile once he's released.." << endl;
+                    cout << endl;
+
+                    cout << "``You should've known better than that.``" << endl;
+
+                    cout << "The crazed prisoner tears the flesh from your face while you struggle to fight him off. He murders you in cold blood. [-200]" << endl;
+                    dungeonScore -= 200;
+                    // Pause for a moment to allow the player to read the message
+                    this_thread::sleep_for(chrono::seconds(5));
+                }
+                else if (prisonerOutcome == 2) {
+                    cout << "The prisoner turns out to be a wizard testing your kindness. He rewards you with a gift for your good nature. [+100]" << endl;
+                    dungeonScore += 100;
+                    // Pause for a moment to allow the player to read the message
+                    this_thread::sleep_for(chrono::seconds(3));
+                }
+            }
+            else {
+                cout << "You decide not to release the prisoner. Could be wise. You feel worse about yourself. [-5]" << endl;
+                dungeonScore -= 5;
+                // Pause for a moment to allow the player to read the message
+                this_thread::sleep_for(chrono::seconds(3));
+            }
+            // Pause for a moment to allow the player to read the message
+            this_thread::sleep_for(chrono::seconds(3));
+            }
+            
             if (dungeonScore >= 200) {
                 clearScreen();
                 cout << "Congratulations, " << playerName << "! You have reached a Worth of 200 and won the game!" << endl;
@@ -229,7 +382,7 @@ int adventure() {
         cin.ignore();
 
         if (choice == "1") {
-            int randomOutcome = rand() % 19; // Generate a random number to determine the outcome
+            int randomOutcome = rand() % 20; // Generate a random number to determine the outcome
 
             if (randomOutcome == 0) {
                 cout << "You encountered a friendly tailor who gave you a free robe! [+10]" << endl;
@@ -400,6 +553,41 @@ int adventure() {
                 this_thread::sleep_for(chrono::seconds(3));
             }
             else if (randomOutcome == 15) {
+
+            string streamArt =
+                " ::   ::   ::   ::   ::   ::   ::   ::  :::  :::  ::   ::   ::   ::  :::  :::  ::   ::   ::   ::   :: \n"
+                ":%*+*%%*+*#%++*%#++*%#++#%#++#%#++#%#+*#%++*##*++%#++#%#++#%%++#%*++##*++%#*++%#*+*%%++*%#++*%#++%*+\n"
+                " *#************#*******++++===+**************#***##******************#***#****##****#*************#\n"
+                " +*%#++*%#=-**=::==-==#%@@@@@@@%**++*%#++#%#++#%#++#%*++%%*=+%%*=*%%++#%%++#%#++#%*++#%*=+%%*=*%%++*%:\n"
+                "-%*==#*-:=+*#%@@@@@@@@@*=+=--*##++%%*=+%%+=+%%*=+%%+=#%%==#%%+=#%*=+%%*=+%%*=+%%*=*%%+=*%%=+#%#=+#%*+\n"
+                " ++*=#%@@@@@@@@@%*-:-*#++*%%+++%%+=*%#++#%#++#%#++#%*++%%+++%%*=*%#++#%%++*%#++#%*++#%*++%%*=*%%++*%:\n"
+                " #+@@@@@%%%%%%%@+.=+##*+*#*++###+**#***##*+*##*+*##*+*##++*##+**#***##*+*##*+*##*+*##*+*##+**#****#*+\n"
+                ":%+@@@@%%%%%%%%@@@+:--:-*#*++#%#++#%*+*%%+++%%*++%#++#%#++#%%++#%*++#%*++%%*++%#++*%%++#%%++#%#++#%#+\n"
+                " ++*-%@@@@@@%%%%%@@@@@@%+--==..-**==*%#+=%%#=+#%#++#%+++%%*=+%%+=*%%++#%%+=#%#++#%*=+%%*=+%%*=*%%++*%-\n"
+                ":%*==*+::+@@@@@@@@@@%%@@@@@@@@@@#*+=-::=+-:=#%+=+%#+=#%%==#%%=+#%*=+%%*=+%%*=+%%+=*%%+=*%%=+#%#+=#%*=\n"
+                " **#**+*#+=----=#@@@@@@@@@@@%%@@@@@@@@@@@@@@@@%=:.:-**********#****##**##****#***##***##****#***#\n"
+                ":%*=+%%*=*%%+=*%%==*%#=-++-::=%@@@@%%%%%%%%%%%@@@@@@@@@@@=.=*#=+#%*=+%%*=+%%*=+%%+=*%%+=*%%+=#%#+=#%*+\n"
+                " +*%#+=*%#+=%%#++%%#=+%%*=*%%=-::*@@@@@@@@@@@@@@@@@@@@@@@@@+:#%*=*%#+=#%%==*%#=+#%*+=%%*=+%%*=+%%+=*%-\n"
+                ":%*=+%%*=*%%+=*%%+=*%#+=#%#+=**=..%@%%%%%%%%%%%%%%%%%%%%@%@@@-+#%*=+%%*=+%%*=+%%+=*%%+=*%%++*%#+=#%#+\n"
+                " *******************#**==-:.:*#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%=*******#****#*********#****#***********\n"
+                " +*%#++*%#++#%#++**-..:#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%#-.-#%*+*%#++#%%++#%#++#%*++#%*++%%*+*%%++*%:\n"
+                ":%*=+%%*=*%%+==+: %@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*=:--=:-#%%=+#%*=+%%*=+%%*=+%%+=*%%+=*%%+=#%#+=%%*+\n"
+                " =*%%==*%#+=%*-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@= =.-*#+=+%%+=+%%+=*%%+=#%%=+#%#=+#%*==%%*=+%%*=+%%+=*%:\n"
+                ":#*++##*+*#%++@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#..-**++#%#++###++#%*++#%*++#%*+*##*+*%#++*##++*#*++#%*+\n"
+                " #***##***##*-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#*=. :---=+##***#***##*+*##*+*##*+*##***##***#*+**#**\n"
+                " =*%#++*%#+=%#+:#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%-  .-..:+*+=#%%++#%#=+#%*++%%*=+%%*=*%%+=*%-\n"
+                "-%*=+%%*=*%%+=+#*. :*#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%:..   =++=+%%+=*%%+=*%%+=#%#+=#%*+\n"
+                " +*%#+=*%#+=%%#++%#*=---. .:=@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@:..  =*+=+%%*=+%%*=*%%++*%:\n"
+                " **#****#****#****#*+**#***#+-... .:%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@+-..--+**##***##***#\n"
+                ":%*+*##*+*#%++*%#++*%#++#%#++#%#++##=....-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#=:-:=#%*++#%*+\n"
+                " +*%#+=#%#+=%%#++%%#=+%%*=*%%+=*%%+=*%#+=*+- :@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@:.:+%%+=*%:\n";
+                cout << streamArt << endl;
+
+
+                std::cout << "Press Enter to continue.." << std::endl;
+
+                std::cin.get();
+
                 cout << "You come across a small stream. Do you dare to drink? [MED RISK] (1.Yes, 2.No)" << endl;
                 string waterChoice;
                 cin >> waterChoice;
@@ -435,6 +623,42 @@ int adventure() {
             }
 
             else if (randomOutcome == 16) {
+
+            string shackArt =
+                
+                "                       :*%=                                 \n"
+                "                   **:=%##::::...         += :-             \n"
+                "                .=#*%%%%%%##%%#*%%%#**+==-*%%**.            \n"
+                "               :@%###%%#%%+======++++++*#*####              \n"
+                "              .*+%**+#*=%*%===================%.            \n"
+                "           .*++%#%*==#*==*%@*=****==#*%+#+*=#+@%:           \n"
+                "          *@#%#*+#+=*##*=++#%****##%%*%*%%*%%*%+#:          \n"
+                "        .=+##*+**#++#%****=**#*%#++*+%=*=+===*===*:         \n"
+                "      -=+*%#+==%%#=+++*#*%=******============*=*+*%+        \n"
+                "    :*+*%#**=+*%##=+#*+#*#=*+******========***%%#%#%#:      \n"
+                "  .+%*#%***+=*%#*#=***+#**=#+*****%**%*#+%*%%%%%%%#***+:    \n"
+                "  *%%%%%@*#*+%#**%=*+++#**=%=**#*#*%@%#%%%%%#*%#**+*+#**=.  \n"
+                ".*%%%#%*****#%%%#%#@##*###+@**%@@@%#%@%#+**+***#%#**%+%*%%= \n"
+                "###%@#*#*%%%#***%#*++***######*#**##*%**%**##*@%%*@@%%%#*#+\n"
+                " .**+**#**+++##=#++%%%%@**++=+*#*+%%*%%%%%%@*%#*%**#=**- .  \n"
+                "    :*%%#+=+*#*=#==*+*++*#********@%**%*##%@@##%*++**+@:    \n"
+                "    .*###+=+*#*=%==*=*=+**+=*+**+*@+%*%*%%%%%****=+**+%     \n"
+                "    .#**#+=*##+=%==*+*=***=*****++@++++++###%****=+***+     \n"
+                "    .%***=+*%*=+#=+*+*+#**=***%**+@+=+++=##%%****++**#+     \n"
+                "    :%+*==##*+=%#+*#*#+*%#=#%#%=#+@+++++=##%%##%#+++**=     \n"
+                "    :#+*==#%++=%#*+##%+*%*=#%#%=#+@****==%%##%%%%*+***=     \n"
+                "    :@=*+=*%+*=#%#=*%%=+%*=%@#%=#*@****==%%**#%#%%#**%%:    \n"
+                "    =@=#*+*#+*=*%%=+%%*+%*=%@%@=%*@****++%%%*++**+-::.      \n"
+                "  =#*#*%#%%%**++%%*+#%*+##=%@%@%%@@*%****#+=::..            \n"
+                "  .::-==+***#********+******%@@@@@@@%%-:.                   \n"
+                "            ..::::::::---===+*%*+--. .                      ";
+
+            // Print the ASCII art
+            std::cout << shackArt << std::endl;
+
+            cout << "Press enter to continue..." << std::endl;
+            cin.get();
+
                 cout << "You notice what looks to be an abandoned shack off the path. Do you search for supplies? [HIGH RISK] (1.Yes, 2.No)" << endl;
                 string shackChoice;
                 cin >> shackChoice;
@@ -483,7 +707,39 @@ int adventure() {
                 this_thread::sleep_for(chrono::seconds(3));
             }
 
+            else if (randomOutcome == 19) {
+            cout << "A fairy blesses you with Worth! [+25]" << endl;
 
+            string fairyArt = R"(
+                                 ,_  .--.
+                          , ,   _)\/    ;--.
+                  . ' .    \_\-'   |  .'    \
+                 -= * =-   (.-,   /  /       |
+                  ' .\'    ).  ))/ .'   _/\ /
+                      \_   \_  /( /     \ /(
+                      /_\ .--'   `-.    //  \
+                      ||\/        , '._//    |
+                      ||/ /`(_ (_,;`-._/     /
+                      \_.'   )   /`\       .'
+                           .' .  |  ;.   /`
+                          /      |\(  `.(  +
+                         |   |/  | `    `
+                         |   |  /
+                         |   |.'
+                      __/'  /
+                  _ .'  _.-`
+               _.` `.-;`/
+              /_.-'` / /
+                    | /
+                   ( /
+                  /_/
+             )";
+
+            std::cout << fairyArt << std::endl;
+            score += 25;
+            // Pause for a moment to allow the player to read the message
+            this_thread::sleep_for(chrono::seconds(3));
+            }
 
             // Checks if the player's score has reached 100
             if (score >= 200) {
