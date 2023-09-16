@@ -87,17 +87,17 @@ int dungeonAdventure(int currentScore) {
         cin.ignore();
 
         if (choice == "1") {
-            int dungeonOutcome = rand() % 4; // Generate a random number for dungeon outcomes
+            int dungeonOutcome = rand() % 7; // Generate a random number for dungeon outcomes
 
             if (dungeonOutcome == 0) {
-                cout << "You encountered a dangerous monster and barely escaped with scratches. [-10]" << endl;
-                dungeonScore -= 10;
+                cout << "You encountered a dangerous mega-centipede and barely escaped with scratches. [-30]" << endl;
+                dungeonScore -= 30;
                 // Pause for a moment to allow the player to read the message
                 this_thread::sleep_for(chrono::seconds(2));
             }
             else if (dungeonOutcome == 1) {
-                cout << "You found a hidden treasure chest in the dark corners of the dungeon! [+20]" << endl;
-                dungeonScore += 20;
+                cout << "You found a hidden treasure chest in the dark corners of the dungeon! [+30]" << endl;
+                dungeonScore += 30;
                 // Pause for a moment to allow the player to read the message
                 this_thread::sleep_for(chrono::seconds(3));
             }
@@ -110,26 +110,93 @@ int dungeonAdventure(int currentScore) {
                     cout << "You grab a shiny but spiky artifact and lose 20 Worth. [-20]" << endl;
                     dungeonScore -= 20;
                     // Pause for a moment to allow the player to read the message
-                    this_thread::sleep_for(chrono::seconds(3));
+                    this_thread::sleep_for(chrono::seconds(2));
                   
                 }
                 else {
                     cout << "You walk past the object. Who cares?" << endl;
+                    // Pause for a moment to allow the player to read the message
+                    this_thread::sleep_for(chrono::seconds(2));
+                }
+                // Pause for a moment to allow the player to read the message
+                this_thread::sleep_for(chrono::seconds(3));
+            }
+            else if (dungeonOutcome == 3) {
+                cout << "You discover a secret passage leading to the next level of the dungeon. [+20]" << endl;
+                dungeonScore += 20;
+                // Pause for a moment to allow the player to read the message
+                this_thread::sleep_for(chrono::seconds(3));
+            }
+            else if (dungeonOutcome == 4) {
+                cout << "You dust off what looks to be an armor set..It is! [+50]" << endl;
+                dungeonScore += 50;
+                // Pause for a moment to allow the player to read the message
+                this_thread::sleep_for(chrono::seconds(3));
+            }
+            else if (dungeonOutcome == 5) {
+                cout << "You find a rag you can light on fire to use as a torch. Perfect. [+10]" << endl;
+                dungeonScore += 10;
+                // Pause for a moment to allow the player to read the message
+                this_thread::sleep_for(chrono::seconds(3));
+            }
+            else if (dungeonOutcome == 6) {
+                cout << "Someone hears your presence. They scream out to you manically for help! You walk to where you heard them." << endl;
+                cout << endl;
+
+                cout << "Upon investigation, it seems there is a prisoner being held in the Dungeon. You ask him who he is.." << endl;
+                cout << endl;
+
+                cout << "``PLEASE HELP ME, THEY'RE COMING BACK - YOU HAVE TO MAKE A CHOICE NOW.``" << endl;
+                cout << endl;
+                
+                cout << "Do you unchain the prisoner? [VERY HIGH RISK](1.Yes, 2.No)" << endl;
+                string prisonerChoice;
+                cin >> prisonerChoice;
+                cin.ignore();
+                if (prisonerChoice == "1") {
+                    int prisonerOutcome = rand() % 3;
+                    if (prisonerOutcome == 0) {
+                        cout << "You unchain the prisoner. He thanks you, and goes his own way. You feel better about yourself. [+10]" << endl;
+                        dungeonScore += 10;
+                        // Pause for a moment to allow the player to read the message
+                        this_thread::sleep_for(chrono::seconds(3));
+                    }
+                    else if (prisonerOutcome == 1) {
+                        cout << "He turns to you with a wicked smile once he's released.." << endl;
+                        cout << endl;
+
+                        cout << "``You should've known better than that.``" << endl;
+
+                        cout << "The crazed prisoner tears the flesh from your face while you struggle to fight him off. He murders you in cold blood. [-200]" << endl;
+                        dungeonScore -= 200;
+                        // Pause for a moment to allow the player to read the message
+                        this_thread::sleep_for(chrono::seconds(5));
+                    }
+                    else if (prisonerOutcome == 2) {
+                        cout << "The prisoner turns out to be a wizard testing your kindness. He rewards you with a gift for your good nature. [+100]" << endl;
+                        dungeonScore += 100;
+                        // Pause for a moment to allow the player to read the message
+                        this_thread::sleep_for(chrono::seconds(3));
+                    }
+                }
+                else {
+                    cout << "You decide not to release the prisoner. Could be wise. You feel worse about yourself. [-5]" << endl;
+                    dungeonScore -= 5;
                     // Pause for a moment to allow the player to read the message
                     this_thread::sleep_for(chrono::seconds(3));
                 }
                 // Pause for a moment to allow the player to read the message
                 this_thread::sleep_for(chrono::seconds(3));
             }
-            else {
-                cout << "You discover a secret passage leading to the next level of the dungeon. [+10]" << endl;
-                dungeonScore += 10;
-                // Pause for a moment to allow the player to read the message
-                this_thread::sleep_for(chrono::seconds(3));
-            }
             if (dungeonScore >= 200) {
                 clearScreen();
                 cout << "Congratulations, " << playerName << "! You have reached a Worth of 200 and won the game!" << endl;
+                return dungeonScore; // End the game
+            }
+            // Check if the player's score has reached or fallen below 0
+            if (dungeonScore <= 0) {
+                clearScreen();
+                cout << "Sorry, " << playerName << ", you've run out of Worth. Game Over! Try again!" << endl;
                 return dungeonScore; // End the game
             }
         }
@@ -147,7 +214,7 @@ int dungeonAdventure(int currentScore) {
 }
 
 int adventure() {
-    int score = 20;
+    int score = 50;
 
     while (true) {
         clearScreen();
@@ -161,7 +228,7 @@ int adventure() {
         cin.ignore();
 
         if (choice == "1") {
-            int randomOutcome = rand() % 13; // Generate a random number to determine the outcome
+            int randomOutcome = rand() % 19; // Generate a random number to determine the outcome
 
             if (randomOutcome == 0) {
                 cout << "You encountered a friendly tailor who gave you a free robe! [+10]" << endl;
@@ -223,20 +290,37 @@ int adventure() {
                 // Pause for a moment to allow the player to read the message
                 this_thread::sleep_for(chrono::seconds(3));
             }
+            
+                else {
+                    cout << "You decline the merchant's offer. The merchant vanishes into thin air." << endl;
+                    // Pause for a moment to allow the player to read the message
+                    this_thread::sleep_for(chrono::seconds(2));
+                }
+                // Pause for a moment to allow the player to read the message
+                this_thread::sleep_for(chrono::seconds(3));
+            }
             else if (randomOutcome == 8) {
                 cout << "A mysterious merchant appears out of nowhere and offers you a rare artifact in exchange for 20 Worth. (1.Buy, 2.Decline)" << endl;
                 string merchantChoice;
                 cin >> merchantChoice;
                 cin.ignore();
                 if (merchantChoice == "1") {
-                    if (score >= 20) {
-                        cout << "You acquire a valuable artifact but lose 20 Worth. [-20]" << endl;
-                        score -= 20;
+                    int waterOutcome = rand() % 3;
+                    if (waterOutcome == 0) {
+                        cout << "You feel hydrated and refreshed! [+20]" << endl;
+                        score += 20;
                         // Pause for a moment to allow the player to read the message
                         this_thread::sleep_for(chrono::seconds(3));
                     }
-                    else {
-                        cout << "You don't have enough Worth to make the purchase. The merchant vanishes." << endl;
+                    else if (waterOutcome == 1) {
+                        cout << "You quenched your thirst. It tasted awful. Tummy Hurty. [+5]" << endl;
+                        score += 5;
+                        // Pause for a moment to allow the player to read the message
+                        this_thread::sleep_for(chrono::seconds(3));
+                    }
+                    else if (waterOutcome == 2) {
+                        cout << "You bend down to take a sip, when a fish jumps and slaps you in the face. Not cool. Not refreshing. [-15]" << endl;
+                        score -= 15;
                         // Pause for a moment to allow the player to read the message
                         this_thread::sleep_for(chrono::seconds(3));
                     }
@@ -244,7 +328,7 @@ int adventure() {
                 else {
                     cout << "You decline the merchant's offer. The merchant vanishes into thin air." << endl;
                     // Pause for a moment to allow the player to read the message
-                    this_thread::sleep_for(chrono::seconds(3));
+                    this_thread::sleep_for(chrono::seconds(2));
                 }
                 // Pause for a moment to allow the player to read the message
                 this_thread::sleep_for(chrono::seconds(3));
@@ -280,31 +364,31 @@ int adventure() {
                         // Pause for a moment to allow the player to read the message
                         this_thread::sleep_for(chrono::seconds(3));
                     }
-                    if (portalOutcome == 1) {
+                    else if (portalOutcome == 1) {
                         cout << "You are transported to a relaxing world. Take a breath. [+10]" << endl;
                         score += 10;
                         // Pause for a moment to allow the player to read the message
                         this_thread::sleep_for(chrono::seconds(3));
                     }
-                    if (portalOutcome == 2) {
+                    else if (portalOutcome == 2) {
                         cout << "You are transported to an ominous universe. Gives you the creeps. [-10]" << endl;
                         score -= 10;
                         // Pause for a moment to allow the player to read the message
                         this_thread::sleep_for(chrono::seconds(3));
                     }
-                    if (portalOutcome == 3) {
+                    else if (portalOutcome == 3) {
                         cout << "The portal fails and it takes your arm and not the rest of your body. Oh no! [-30]" << endl;
                         score -= 30;
                         // Pause for a moment to allow the player to read the message
                         this_thread::sleep_for(chrono::seconds(3));
                     }
-                    if (portalOutcome == 4) {
+                    else if (portalOutcome == 4) {
                         cout << "You are transported to a world of FOOD. Stock up! [+25]" << endl;
                         score += 25;
                         // Pause for a moment to allow the player to read the message
                         this_thread::sleep_for(chrono::seconds(3));
                     }
-                    else {
+                    else if (portalOutcome == 5) {
                         cout << "The portal leads to a perilous dimension. You lose some Worth. [-20]" << endl;
                         score -= 20;
                         // Pause for a moment to allow the player to read the message
@@ -319,6 +403,109 @@ int adventure() {
                 // Pause for a moment to allow the player to read the message
                 this_thread::sleep_for(chrono::seconds(3));
             }
+            else if (randomOutcome == 13) {
+            cout << "A babboon leaps from the tree next to you and BONKS your head. Ouch. [-10]" << endl;
+            score -= 10;
+            // Pause for a moment to allow the player to read the message
+            this_thread::sleep_for(chrono::seconds(3));
+            }
+            else if (randomOutcome == 14) {
+            cout << "A stray cat crosses paths with you. He lets you pet it. [+10]" << endl;
+            score += 10;
+            // Pause for a moment to allow the player to read the message
+            this_thread::sleep_for(chrono::seconds(3));
+            }
+            else if (randomOutcome == 15) {
+            cout << "You come across a small stream. Do you dare to drink? [MED RISK] (1.Yes, 2.No)" << endl;
+            string waterChoice;
+            cin >> waterChoice;
+            cin.ignore();
+            if (waterChoice == "1") {
+                int waterOutcome = rand() % 3;
+                if (waterOutcome == 0) {
+                    cout << "You feel hydrated and refreshed! [+20]" << endl;
+                    score += 20;
+                    // Pause for a moment to allow the player to read the message
+                    this_thread::sleep_for(chrono::seconds(3));
+                }
+                else if (waterOutcome == 1) {
+                    cout << "You quenched your thirst. It tasted awful. Tummy Hurty. [+5]" << endl;
+                    score += 5;
+                    // Pause for a moment to allow the player to read the message
+                    this_thread::sleep_for(chrono::seconds(3));
+                }
+                else if (waterOutcome == 2) {
+                    cout << "You bend down to take a sip, when a fish jumps and slaps you in the face. Not cool. Not refreshing. [-15]" << endl;
+                    score -= 15;
+                    // Pause for a moment to allow the player to read the message
+                    this_thread::sleep_for(chrono::seconds(3));
+                }
+            }
+            else {
+                cout << "You decide not to drink from the stream. Could be wise." << endl;
+                // Pause for a moment to allow the player to read the message
+                this_thread::sleep_for(chrono::seconds(3));
+            }
+            // Pause for a moment to allow the player to read the message
+            this_thread::sleep_for(chrono::seconds(3));
+            }
+
+            /*else if (randomOutcome == 16) {
+            cout << "You have died of Dysentery. Better luck next time! [-200]" << endl;
+            score -= 200;
+            // Pause for a moment to allow the player to read the message
+            this_thread::sleep_for(chrono::seconds(3));
+            }*/
+
+            else if (randomOutcome == 17) {
+            cout << "You notice what looks to be an abandoned shack off the path. Do you search for supplies? [HIGH RISK] (1.Yes, 2.No)" << endl;
+            string shackChoice;
+            cin >> shackChoice;
+            cin.ignore();
+            if (shackChoice == "1") {
+                int shackOutcome = rand() % 3;
+                if (shackOutcome == 0) {
+                    cout << "You find some bandages to heal up. Perfect. [+50]" << endl;
+                    score += 50;
+                    // Pause for a moment to allow the player to read the message
+                    this_thread::sleep_for(chrono::seconds(3));
+                }
+                else if (shackOutcome == 1) {
+                    cout << "Upon opening the shack door, a crazed lunatic pokes you in the eye. [-25]" << endl;
+                    score -= 25;
+                    // Pause for a moment to allow the player to read the message
+                    this_thread::sleep_for(chrono::seconds(3));
+                }
+                else if (shackOutcome == 2) {
+                    cout << "Upon opening the shack door, a stray dog comes up to you. He takes a chomp. [-35]" << endl;
+                    score -= 35;
+                    // Pause for a moment to allow the player to read the message
+                    this_thread::sleep_for(chrono::seconds(3));
+                }
+            }
+            else {
+                cout << "You decide to keep walking. Could be wise." << endl;
+                // Pause for a moment to allow the player to read the message
+                this_thread::sleep_for(chrono::seconds(3));
+            }
+            // Pause for a moment to allow the player to read the message
+            this_thread::sleep_for(chrono::seconds(3));
+            }
+
+            else if (randomOutcome == 18) {
+            cout << "A falcon poops on your head. Gross. [-10]" << endl;
+            score -= 10;
+            // Pause for a moment to allow the player to read the message
+            this_thread::sleep_for(chrono::seconds(3));
+            }
+
+            else if (randomOutcome == 19) {
+            cout << "A friendly passerby gives you a piece of bread for your travels. Nice fellow. [+10]" << endl;
+            score += 10;
+            // Pause for a moment to allow the player to read the message
+            this_thread::sleep_for(chrono::seconds(3));
+            }
+    
 
             // Checks if the player's score has reached 100
             if (score >= 200) {
@@ -388,6 +575,11 @@ int main() {
 
         // Display elapsed time rounded to two decimal places
         cout << "Elapsed Time: " << fixed << setprecision(2) << elapsedSeconds.count() << " seconds" << endl;
+        cout << endl;
+
+        cout << "Developer's Best Time: 97.68 seconds." << endl;
+        cout << endl;
+
 
         cout << "Prove your Worth again? (yes/no): ";
         string playAgain;
