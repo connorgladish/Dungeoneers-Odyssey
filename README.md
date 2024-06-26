@@ -42,27 +42,26 @@ Welcome to **Dungeoneer's Odyssey**, a text-based adventure game where you embar
 
 - Players will face significant choices, such as fighting or running from enemies and deciding whether to help other characters.
 - These choices can have high risks and high rewards, adding to the game's tension and excitement.
-
+---
 ## Installation
 
 To compile and run **Dungeoneer's Odyssey**, you need a C++ compiler. Follow these steps to set up the game:
 
 1. **Clone the repository:**
-    \`\`\`bash
+    ```bash
     git clone https://github.com/connorgladish/Dungeoneers-Odyssey.git
     cd dungeoneers-odyssey
-    \`\`\`
+   
 
 2. **Compile the game:**
-    \`\`\`bash
+    ```bash
     g++ -o Dungeoneers_Odyssey main.cpp
-    \`\`\`
+    
 
 3. **Run the game:**
-    \`\`\`bash
+    ```bash
     ./Dungeoneers_Odyssey
-    \`\`\`
-
+---  
 ## Usage
 
 Once the game is running, follow the on-screen prompts to progress through the story. Use the number keys to make choices when presented with options. Pay close attention to the narrative and choose wisely to increase your worth and survive the dungeon.
