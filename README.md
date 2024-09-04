@@ -55,12 +55,12 @@ To compile and run **Dungeoneer's Odyssey**, you need a C++ compiler. Follow the
 
 2. **Compile the game:**
     ```bash
-    g++ -o Dungeoneers_Odyssey main.cpp
+    g++ -o game game.cpp
     
 
 3. **Run the game:**
     ```bash
-    ./Dungeoneers_Odyssey
+    ./game
 ---  
 ## Usage
 
