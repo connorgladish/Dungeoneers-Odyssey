@@ -51,12 +51,9 @@ To compile and run **Dungeoneer's Odyssey**, you need a C++ compiler. Follow the
     ```bash
     git clone https://github.com/connorgladish/Dungeoneers-Odyssey.git
     cd dungeoneers-odyssey
-
 2. **Compile the game:**
     ```bash
     g++ -o game game.cpp
-    
-
 3. **Run the game:**
     ```bash
     ./game
