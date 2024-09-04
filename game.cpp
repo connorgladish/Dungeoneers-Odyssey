@@ -153,8 +153,7 @@ int dungeonAdventure(int currentScore) {
                     // Pause for a moment to allow the player to read the message
                     waitForEnter(); // Wait for user to press Enter
                 }
-                // Pause for a moment to allow the player to read the message
-                waitForEnter(); // Wait for user to press Enter
+               
             }
             else if (dungeonOutcome == 3) {
                 cout << "\nYou discover a secret passage leading to the next level of the dungeon. [+20]" << endl;
@@ -265,8 +264,7 @@ int dungeonAdventure(int currentScore) {
                     // Pause for a moment to allow the player to read the message
                     waitForEnter(); // Wait for user to press Enter
                 }
-                // Pause for a moment to allow the player to read the message
-                waitForEnter(); // Wait for user to press Enter
+             
             }
             else if (dungeonOutcome == 7) {
             cout << "Someone hears your presence. They scream out to you manically for help! You walk to where you heard them." << endl;
@@ -446,9 +444,6 @@ int adventure() {
                     // Pause for a moment to allow the player to read the message
                     waitForEnter(); // Wait for user to press Enter
                 }
-
-                // Pause for a moment to allow the player to read the message
-                waitForEnter(); // Wait for user to press Enter
             }
             else if (randomOutcome == 8) {
                 cout << "\nA mysterious merchant appears out of nowhere and offers you a rare artifact in exchange for 20 Worth. (1.Buy, 2.Decline)" << endl;
@@ -624,8 +619,6 @@ int adventure() {
                     // Pause for a moment to allow the player to read the message
                     waitForEnter(); // Wait for user to press Enter
                 }
-                // Pause for a moment to allow the player to read the message
-                waitForEnter(); // Wait for user to press Enter
             }
 
             else if (randomOutcome == 16) {
@@ -695,8 +688,7 @@ int adventure() {
                     // Pause for a moment to allow the player to read the message
                     waitForEnter(); // Wait for user to press Enter
                 }
-                // Pause for a moment to allow the player to read the message
-                waitForEnter(); // Wait for user to press Enter
+              
             }
 
             else if (randomOutcome == 17) {
